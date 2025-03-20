@@ -10,6 +10,7 @@
 
       <!-- Contenido principal -->
       <div class="content">
+        <button @click="logout">Cerrar Sesión</button> <!-- Botón para cerrar sesión -->
         <router-view />
       </div>
     </div>

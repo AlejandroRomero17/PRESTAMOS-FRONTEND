@@ -13,8 +13,13 @@ export const useAuthStore = defineStore("auth", {
           credentials
         );
         this.token = response.data.access_token;
-        localStorage.setItem("token", this.token); // Guarda el token en el almacenamiento local
-        axios.defaults.headers.common["Authorization"] = `Bearer ${this.token}`; // Usa el token en todas las solicitudes
+
+        if (this.token) {
+          localStorage.setItem("token", this.token); // Guarda el token solo si no es null
+          axios.defaults.headers.common[
+            "Authorization"
+          ] = `Bearer ${this.token}`; // Usa el token en todas las solicitudes
+        }
       } catch (error) {
         throw new Error("Error en login");
       }

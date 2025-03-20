@@ -30,7 +30,7 @@ const router = createRouter({
 });
 
 // Guardia de navegación
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, _, next) => {
   const authStore = useAuthStore();
   if (to.meta.requiresAuth && !authStore.token) {
     next("/login"); // Redirige al login si no está autenticado
